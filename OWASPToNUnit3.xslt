@@ -21,7 +21,7 @@
                   Original OWASP Report
                 </descrition>
                 <filePath>
-                  <xsl:value-of select="$sourceFolder"/>OWASP-ZAP-Report.xml
+                  ($System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml
                 </filePath>
               </attachment>
               <attachment>

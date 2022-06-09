@@ -43,9 +43,8 @@ steps:
     testResultsFormat: 'NUnit'
     testResultsFiles: 'Converted-OWASP-ZAP-Report.xml'
 - task: PublishPipelineArtifact@1
-  displayName: Publish JMeter Reports
   condition: succeededOrFailed()
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_OWASP-Security-Test/reports'
+    targetPath: '$(System.DefaultWorkingDirectory)/_OWASP-Security-Test'
     artifact: 'ReportSecurityTest'
     

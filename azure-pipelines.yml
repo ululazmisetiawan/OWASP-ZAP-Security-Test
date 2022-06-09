@@ -45,6 +45,6 @@ steps:
 - task: PublishPipelineArtifact@1
   condition: succeededOrFailed()
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)'
+    targetPath: 'reports'
     artifact: 'ReportSecurityTest'
     

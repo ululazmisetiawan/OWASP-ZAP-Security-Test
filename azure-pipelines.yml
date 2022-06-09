@@ -42,11 +42,11 @@ steps:
 - task: publishhtmlreport@1
   inputs:
     htmlType: 'genericHTML'
-    htmlPath: 'scan-report.html'
+    htmlPath: '$(System.DefaultWorkingDirectory)/scan-report.html'
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'NUnit'
-    testResultsFiles: 'Converted-OWASP-ZAP-Report.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'
 - task: PublishPipelineArtifact@1
   condition: succeededOrFailed()
   inputs:

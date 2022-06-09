@@ -21,7 +21,7 @@
                   Original OWASP Report
                 </descrition>
                 <filePath>
-                  ($System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml
+                  OWASP-ZAP-Report.xml
                 </filePath>
               </attachment>
               <attachment>
@@ -29,7 +29,7 @@
                   Original OWASP Report 2
                 </descrition>
                 <filePath>
-                  ($System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml
+                  OWASP-ZAP-Report.xml
                 </filePath>
               </attachment>
             </attachments>

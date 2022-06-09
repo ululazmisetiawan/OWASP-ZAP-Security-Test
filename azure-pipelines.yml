@@ -41,4 +41,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'NUnit'
-    testResultsFiles: '$(Build.SourcesDirectory)/Converted-OWASP-ZAP-Report.xml'
+    testResultsFiles: 'Converted-OWASP-ZAP-Report.xml'
+- task: PublishReleaseArtifact@1
+  inputs:
+    artifactPath: '$(System.DefaultWorkingDirectory)/_OWASP-Security-Test/reports'

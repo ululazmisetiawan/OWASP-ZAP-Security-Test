@@ -45,6 +45,6 @@ steps:
 - task: PublishPipelineArtifact@1
   condition: succeededOrFailed()
   inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)/_OWASP-Security-Test'
+    targetPath: '$(System.DefaultWorkingDirectory)'
     artifact: 'ReportSecurityTest'
     

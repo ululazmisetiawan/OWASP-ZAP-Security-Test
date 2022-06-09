@@ -32,7 +32,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      $XslPath = "$(System.DefaultWorkingDirectory)/_OWASP-Security-Test/OWASPToNUnit3.xslt"
+      $XslPath = "$(System.DefaultWorkingDirectory)/OWASPToNUnit3.xslt"
       $XmlInputPath = "$(System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml"
       $XmlOutputPath = "$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml"
       $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform

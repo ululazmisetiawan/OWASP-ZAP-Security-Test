@@ -42,7 +42,7 @@ steps:
 - task: publishhtmlreport@1
   inputs:
     htmlType: 'genericHTML'
-    htmlPath: '$(System.DefaultWorkingDirectory)/scan-report.html'
+    htmlPath: 'scan-report.html'
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'NUnit'

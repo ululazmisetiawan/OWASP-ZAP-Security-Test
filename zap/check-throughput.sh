@@ -7,11 +7,7 @@ echo "Actual Throughput: $actualThroughput"
 echo "Expected Throughput: $expectedThroughput"
 echo "====="
 
-float_cmp() {
-    awk "BEGIN{exit(!( $* ))}" <&-
-}
-
-if float_cmp "$actualThroughput >= $expectedThroughput"; then
+if  "$actualThroughput >= $expectedThroughput"; then
   echo "Test Passed because actual throughput is greater or equal than expected throughput"
 else
   echo "Test Throughput Failed because actual throughput less than expected throughput"

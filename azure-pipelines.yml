@@ -43,6 +43,11 @@ steps:
   inputs:
     htmlType: 'genericHTML'
     htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
+    
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: report/zap
+    artifact: SecurityLoadTest
 
 - task: PublishTestResults@2
   inputs:

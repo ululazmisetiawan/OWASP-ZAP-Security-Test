@@ -59,8 +59,8 @@ steps:
     targetType: 'inline'
     script: |
       #!/usr/bin/env bash
-      tasecasecount=$(grep tasecasecount $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml | sed -e 's/.*tasecasecount=\"//' -e 's/\".*//')
-      echo "##vso[task.setvariable variable=tasecasecount]$tasecasecount"
+      failed=$(grep failed $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml | sed -e 's/.*failed=\"//' -e 's/\".*//')
+      echo "##vso[task.setvariable variable=failed]$failed"
 
 
   

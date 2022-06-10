@@ -43,12 +43,7 @@ steps:
   inputs:
     htmlType: 'genericHTML'
     htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
-- task: FileTransform@1
-  inputs:
-    folderPath: '$(System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml'
-    enableXmlTransform: true
-    fileType: 'json'
-    targetFiles: '$(System.DefaultWorkingDirectory)'
+
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'NUnit'

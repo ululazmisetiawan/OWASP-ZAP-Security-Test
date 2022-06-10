@@ -46,7 +46,7 @@ steps:
     
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: report/zap
+    targetPath: report
     artifact: SecurityLoadTest
 
 - task: PublishTestResults@2

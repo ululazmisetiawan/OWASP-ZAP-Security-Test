@@ -12,9 +12,9 @@ float_cmp() {
 }
 
 if float_cmp "$actualThroughput >= $expectedThroughput"; then
-  echo "Test Passed because actual throughput is greater or equal than expected throughput"
-else
   echo "Test Throughput Failed because actual throughput less than expected throughput"
   exit 1
   #write-error "Test Failed";
+else
+  echo "Test Passed because actual throughput is greater or equal than expected throughput"
 fi

@@ -59,6 +59,7 @@ steps:
     targetType: 'inline'
     script: |
       #!/usr/bin/env bash
+      sudo apt-get install xmlstarlet
       failed=$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)
       echo $failed
 

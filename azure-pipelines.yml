@@ -46,8 +46,8 @@ steps:
     
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: report
-    artifact: SecurityLoadTest
+    targetPath: $(System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml
+    artifact: SecurityTest
 
 - task: PublishTestResults@2
   inputs:

@@ -63,8 +63,8 @@ steps:
     targetType: 'inline'
     script: |
       #!/usr/bin/env bash
-      failed=$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)
-      echo "Hasilnya adalah : $failed"
+      actualThroughput=$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)
+      echo "Hasilnya adalah : $actualThroughput"
 
 
   

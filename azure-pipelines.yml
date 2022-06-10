@@ -46,8 +46,9 @@ steps:
 - task: FileTransform@1
   inputs:
     folderPath: '$(System.DefaultWorkingDirectory)/OWASP-ZAP-Report.xml'
+    enableXmlTransform: true
     fileType: 'json'
-    targetFiles: '$(System.DefaultWorkingDirectory)/OWASP-ZAP-JSON.json'
+    targetFiles: '$(System.DefaultWorkingDirectory)'
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'NUnit'

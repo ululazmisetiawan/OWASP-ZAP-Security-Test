@@ -53,21 +53,13 @@ steps:
   inputs:
     testResultsFormat: 'NUnit'
     testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      [xml]$pomXml = Get-Content $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml
-      # failed
-      Write-Host $pomXml.project.failed
-      $failed=$pomXml.project.failed
-      Write-Host "##vso[task.setvariable variable=failed]$failed"
+
 - task: Bash@3
   inputs:
     targetType: 'inline'
     script: |
       #!/usr/bin/env bash
-      failed=$(grep version $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml | grep -v '<?xml' | grep 'failed'|head -n 1|awk '{print $1}'| cut -d'>' -f 2 | cut -d'<' -f 1)
+      failed=$(grep failed $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)
       echo "##vso[task.setvariable variable=failed]$failed"
 
 

@@ -65,6 +65,11 @@ steps:
       #!/usr/bin/env bash
       actualThroughput=$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)
       echo "Hasilnya adalah : $actualThroughput"
+- task: Bash@3
+  inputs:
+    filePath: 'zap/check-throughput.sh'
+    arguments: '$(actualThroughput) $(expectedThroughput)'
+    workingDirectory: zap
 
 
   

@@ -53,13 +53,6 @@ steps:
   inputs:
     testResultsFormat: 'NUnit'
     testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'
-
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      sudo apt-get install jq
-      echo "##vso[task.setvariable variable=inputResultRisk;]$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
       
 - task: Bash@3
   inputs:
@@ -70,7 +63,10 @@ steps:
 - task: Bash@3
   inputs:
     script: |
-       echo "Hasil Result :" $inputResultRisk
+      echo "======= Summary Report ========"
+      sudo apt-get install jq
+      echo "##vso[task.setvariable variable=inputResultRisk;]$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
+      echo "==============================="
     targetType: filePath
     filePath: 'zap/check-throughput.sh'
     arguments: '$(actualThroughput) $(expectedThroughput)'

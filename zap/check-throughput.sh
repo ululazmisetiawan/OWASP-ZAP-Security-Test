@@ -3,9 +3,11 @@
 actualThroughput=$1
 expectedThroughput=$2
 
+echo "======PASSED / FAILED======="
 echo "Actual Throughput : $actualThroughput"
 echo "Expected Throughput : $expectedThroughput"
-echo "====="
+echo "============================"
+echo "Result :"
 
 float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-

@@ -71,7 +71,7 @@ steps:
   inputs:
     targetType: filePath
     filePath: 'zap/check-throughput.sh'
-    arguments: '$(actualThroughput) $(expectedThroughput) $(inputResultRisk)'
+    arguments: '$(actualThroughput) $(expectedThroughput)'
     workingDirectory: zap
   
 

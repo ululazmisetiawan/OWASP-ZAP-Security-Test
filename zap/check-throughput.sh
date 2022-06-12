@@ -2,9 +2,7 @@
 #
 actualThroughput=$1
 expectedThroughput=$2
-inputResultRisk=$3
 
-echo "Result : $inputResultRisk"
 echo "Actual Throughput : $actualThroughput"
 echo "Expected Throughput : $expectedThroughput"
 echo "====="

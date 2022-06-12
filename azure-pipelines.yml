@@ -67,10 +67,10 @@ steps:
     targetType: 'inline'
     script: |
       echo "======= Summary Report ========"
-      echo "$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
+      echo "$(jq -r '.site | .[] | .name | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json) ":" $(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualThroughput;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
-      echo "Total : " $actualThroughput
+ 
 - task: Bash@3
   displayName: PASSED / FAILED 
   inputs:

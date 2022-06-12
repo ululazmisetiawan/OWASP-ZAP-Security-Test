@@ -61,7 +61,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      test_output = $(jq .pluginid $(System.DefaultWorkingDirectory)/api-report.json)
+      sudo apt-get install jq
+      test_output = (jq .pluginid $(System.DefaultWorkingDirectory)/api-report.json)
       echo $test_output
 
 - task: Bash@3

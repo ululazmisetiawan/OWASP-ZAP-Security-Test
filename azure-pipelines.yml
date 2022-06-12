@@ -69,7 +69,8 @@ steps:
       echo "##vso[task.setvariable variable=actualThroughput;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 - task: Bash@3
   inputs:
-    script: echo "Hasil Result :" $inputResultRisk
+    script: |
+       echo "Hasil Result :" $inputResultRisk
     targetType: filePath
     filePath: 'zap/check-throughput.sh'
     arguments: '$(actualThroughput) $(expectedThroughput)'

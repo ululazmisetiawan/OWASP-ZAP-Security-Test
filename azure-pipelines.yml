@@ -59,7 +59,7 @@ steps:
     targetType: 'inline'
     script: |
       sudo apt-get install jq
-      echo "jq '.pluginid' $(System.DefaultWorkingDirectory)/api-report.json"
+      echo "(jq '.pluginid' $(System.DefaultWorkingDirectory)/api-report.json)"
       
 
 - task: Bash@3

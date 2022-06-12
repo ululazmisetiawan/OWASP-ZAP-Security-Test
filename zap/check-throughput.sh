@@ -15,11 +15,10 @@ float_cmp() {
 
 if [ "$inputResultRisk" == "High" ]; then
   echo "Theres result high"
-  if float_cmp "$actualThroughput >= $expectedThroughput"; then
-    echo "Test Throughput Failed because actual throughput less than expected throughput"
-    exit 1
-    #write-error "Test Failed";
-    fi
+elif float_cmp "$actualThroughput >= $expectedThroughput"; then
+  echo "Test Throughput Failed because actual throughput less than expected throughput"
+  exit 1
+  #write-error "Test Failed";
 else
   echo "Test Passed because actual throughput is greater or equal than expected throughput"
 fi

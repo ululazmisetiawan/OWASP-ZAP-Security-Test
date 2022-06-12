@@ -55,18 +55,23 @@ steps:
     testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'
       
 - task: Bash@3
+  displayName: Install Plugin
   inputs:
     targetType: 'inline'
     script: |
       sudo apt-get install xmlstarlet
       sudo apt-get install jq
 - task: Bash@3
+  displayName: Summary Report 
   inputs:
     targetType: 'inline'
     script: |
+      echo "======= Summary Report ========"
       echo "$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
+      echo "==============================="
       echo "##vso[task.setvariable variable=actualThroughput;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 - task: Bash@3
+  displayName: PASSED / FAILED 
   inputs:
     filePath: 'zap/check-throughput.sh'
     arguments: '$(actualThroughput) $(expectedThroughput)'

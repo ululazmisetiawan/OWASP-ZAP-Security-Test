@@ -25,7 +25,7 @@ steps:
     targetType: 'inline'
     script: |
       chmod -R 777  ./
-      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t http://jv-dds-ccs-sit.anteraja.id/rest/speedQuery/waybill/byNo/web -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.html 
+      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t http://jv-dds-ccs-sit.anteraja.id/rest/speedQuery/waybill/byNo/web -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.json 
       
       true
       
@@ -42,7 +42,7 @@ steps:
 - task: publishhtmlreport@1
   inputs:
     htmlType: 'genericHTML'
-    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
+    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.json'
     
 - task: PublishPipelineArtifact@1
   inputs:

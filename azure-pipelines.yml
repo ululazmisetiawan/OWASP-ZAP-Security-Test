@@ -61,7 +61,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      test_output = $(jq .site.alert.pluginid $(System.DefaultWorkingDirectory)/api-report.json)
+      test_output = $(jq .site.alerts.pluginid $(System.DefaultWorkingDirectory)/api-report.json)
       echo "$test_output"
 
 

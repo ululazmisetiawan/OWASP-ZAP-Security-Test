@@ -59,8 +59,8 @@ steps:
     targetType: 'inline'
     script: |
       sudo apt-get install jq
-      input_text = jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json
-      echo $input_text
+      echo "##vso[task.setvariable variable=inputResultRisk;]$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
+      echo $inputResultRisk
       
 - task: Bash@3
   inputs:

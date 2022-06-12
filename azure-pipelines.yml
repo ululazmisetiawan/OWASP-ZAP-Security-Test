@@ -57,6 +57,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'sudo apt-get install xmlstarlet'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      test_output = $(jq .site.alert.pluginid $(System.DefaultWorkingDirectory)/api-report.json)
+      echo "$test_output"
+
 
 - task: Bash@3
   inputs:

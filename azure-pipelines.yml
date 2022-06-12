@@ -46,7 +46,7 @@ steps:
     
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml
+    targetPath: $(System.DefaultWorkingDirectory)/api-scan-report.html
     artifact: SecurityTest
 
 - task: PublishTestResults@2

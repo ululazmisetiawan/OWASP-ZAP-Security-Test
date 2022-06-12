@@ -60,7 +60,7 @@ steps:
     script: |
       sudo apt-get install jq
       export input_text = $(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)
-      export output_text = $(echo $input_text| cut -d'_' -f 2)
+      export output_text = $(echo $input_text| cut -d ' ' -f1)
       echo $output_text
       
 - task: Bash@3

@@ -25,7 +25,7 @@ steps:
     targetType: 'inline'
     script: |
       chmod -R 777  ./
-      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t http://jv-dds-ccs-sit.anteraja.id/rest/speedQuery/waybill/byNo/web -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.json 
+      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t http://jv-dds-ccs-sit.anteraja.id/rest/speedQuery/waybill/byNo/web -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.html -J api-report.json 
       
       true
       
@@ -46,7 +46,7 @@ steps:
     
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/api-scan-report.html
+    targetPath: $(System.DefaultWorkingDirectory)/api-report.json
     artifact: SecurityTest
 
 - task: PublishTestResults@2

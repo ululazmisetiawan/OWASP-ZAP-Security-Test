@@ -13,7 +13,7 @@ float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-
 }
 
-if [[ $inputResultRisk == *"High"* ]]; then
+if [[ "$inputResultRisk" == *"High"* ]]; then
   echo "Theres result high"
 if else float_cmp "$actualThroughput >= $expectedThroughput"; then
   echo "Test Throughput Failed because actual throughput less than expected throughput"

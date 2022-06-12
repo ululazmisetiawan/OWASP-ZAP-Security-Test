@@ -59,7 +59,7 @@ steps:
     targetType: 'inline'
     script: |
       sudo apt-get install jq
-      input_text = jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json
+      input_text =$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)
       output_text=$(echo $input_text| cut -d'_' -f 2)
       echo $output_text
       

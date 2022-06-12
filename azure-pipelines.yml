@@ -59,20 +59,18 @@ steps:
     targetType: 'inline'
     script: |
       sudo apt-get install xmlstarlet
+      sudo apt-get install jq
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "##vso[task.setvariable variable=actualThroughput;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 - task: Bash@3
   inputs:
-      targetType: 'inline'
-      script: |
-        echo "======= Summary Report ========"
-        sudo apt-get install jq
-        echo "##vso[task.setvariable variable=inputResultRisk;]$(jq -r '.site | .[] | .alerts | .[] | .riskdesc' $(System.DefaultWorkingDirectory)/api-report.json)"
-        echo "==============================="
-      filePath: 'zap/check-throughput.sh'
-      arguments: '$(actualThroughput) $(expectedThroughput)'
-      workingDirectory: zap
-
-
+    filePath: 'zap/check-throughput.sh'
+    arguments: '$(actualThroughput) $(expectedThroughput)'
+    workingDirectory: zap
 
   
 

@@ -74,8 +74,8 @@ steps:
 - task: Bash@3
   displayName: PASSED / FAILED 
   inputs:
-    filePath: 'zap/check-throughput.sh'
-    arguments: '$(actualThroughput) $(expectedThroughput)'
+    filePath: 'zap/check-result.sh'
+    arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
   

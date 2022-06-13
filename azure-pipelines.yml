@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: OWASP ZAP SECURITY TEST
+- script: echo OWASP ZAP SECURITY TEST
 
 - task: DockerInstaller@0
   inputs:

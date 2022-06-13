@@ -10,17 +10,13 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: OWASP ZAP SECURITY TEST
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: DockerInstaller@0
   inputs:
     dockerVersion: '17.09.0-ce'
 - task: Bash@3
+  displayName: Initialized Owasp Zap
   inputs:
     targetType: 'inline'
     script: |
@@ -30,6 +26,7 @@ steps:
       true
       
 - task: PowerShell@2
+  displayName: Result XLST to NUNIT
   inputs:
     targetType: 'inline'
     script: |
@@ -40,16 +37,14 @@ steps:
       $XslTransform.Load($XslPath)
       $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
 - task: publishhtmlreport@1
+  displayName: Publish Result HTML
   inputs:
     htmlType: 'genericHTML'
     htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
     
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: $(System.DefaultWorkingDirectory)/api-report.json
-    artifact: SecurityTest
 
 - task: PublishTestResults@2
+  displayName: Publish Result Nunit to Azure DevOps
   inputs:
     testResultsFormat: 'NUnit'
     testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'

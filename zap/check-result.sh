@@ -13,10 +13,10 @@ float_cmp() {
 }
 
 if float_cmp "$actualResult > $expectedResult"; then
-  echo "Test Passed because Actual Total Failed is greater or equal than Expected Total Failed"
-else
-  echo "Test Failed because Actual Total Failed less than Expected Total Failed"
+  echo "Test Failed because Actual Total Failed is greater or equal than Expected Total Failed"
   exit 1
   #write-error "Test Failed";
+else
+  echo "Test Passed because Actual Total Failed less than Expected Total Failed"
 fi
 echo "============================"

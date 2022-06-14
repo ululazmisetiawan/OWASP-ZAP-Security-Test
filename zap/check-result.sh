@@ -12,12 +12,11 @@ float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-
 }
 
-if float_cmp "$actualResult> $expectedResult"; then
-  echo "Result : Test FAILED because Actual Total Result greater than Expected Total Result"
+if float_cmp "$actualResult >= $expectedResult"; then
+  echo "Test Passed because actual throughput is greater or equal than expected throughput"
+else
+  echo "Test Throughput Failed because actual throughput less than expected throughput"
   exit 1
   #write-error "Test Failed";
-else
-  echo "Result : Test PASSED because Actual Total Result is less than Expected Total Result"
 fi
-
 echo "============================"

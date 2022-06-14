@@ -4,8 +4,8 @@ actualResult=$1
 expectedResult=$2
 
 echo "======PASSED / FAILED======="
-echo "Actual Total Result : $actualResult"
-echo "Expected Total Result : $expectedResult"
+echo "Actual Total Failed : $actualResult"
+echo "Expected Total Failed : $expectedResult"
 
 
 float_cmp() {

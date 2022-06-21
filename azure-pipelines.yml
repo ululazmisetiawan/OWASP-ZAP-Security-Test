@@ -75,6 +75,12 @@ steps:
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
  
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)'
+    artifact: 'OwaspZap'
+    publishLocation: 'pipeline'
+
 - task: Bash@3
   displayName: PASSED / FAILED 
   inputs:
@@ -82,8 +88,3 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: 'OwaspZap'
-    publishLocation: 'pipeline'

@@ -77,8 +77,8 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
-  
-- task: PublishHtmlReport@1
+- task: publishhtmlreport@1
   inputs:
-    reportDir: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
+    htmlType: 'genericHTML'
+    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
     

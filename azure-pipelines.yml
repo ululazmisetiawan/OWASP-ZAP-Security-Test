@@ -77,7 +77,7 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
-- task: myPublisherId.myExtensionId.myContributionId.myTaskName@1
+- task: taskguid@1
   inputs:
     htmlType: 'genericHTML'
     htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'

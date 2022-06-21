@@ -51,6 +51,11 @@ steps:
   inputs:
     testResultsFormat: 'NUnit'
     testResultsFiles: '$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml'
+    
+- task: LakshayKaushik.PublishHTMLReports.publishhtmlreport.publishhtmlreport@1.2.1
+  inputs:
+    htmlType: 'genericHTML'
+    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
       
 - task: Bash@3
   displayName: Install Plugin
@@ -77,7 +82,3 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
-- task: LakshayKaushik.PublishHTMLReports.publishhtmlreport.publishhtmlreport@1.2.1
-  inputs:
-    htmlType: 'genericHTML'
-    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'

@@ -77,7 +77,7 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
-- task: publishhtmlreport@1
+- task: JakubRumpca.azure-pipelines-html-report.PublishHtmlReport.PublishHtmlReport, LakshayKaushik.PublishHTMLReports.publishhtmlreport.publishhtmlreport
   inputs:
     htmlType: 'genericHTML'
     htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'

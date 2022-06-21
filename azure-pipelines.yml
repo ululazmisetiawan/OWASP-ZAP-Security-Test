@@ -82,3 +82,8 @@ steps:
     arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)'
+    artifact: 'OwaspZap'
+    publishLocation: 'pipeline'

@@ -45,12 +45,6 @@ steps:
       $XslTransform = New-Object System.Xml.Xsl.XslCompiledTransform
       $XslTransform.Load($XslPath)
       $XslTransform.Transform($XmlInputPath, $XmlOutputPath)
-- task: publishhtmlreport@1
-  displayName: Publish Result HTML
-  inputs:
-    htmlType: 'genericHTML'
-    htmlPath: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
-    
 
 - task: PublishTestResults@2
   displayName: Publish Result Nunit to Azure DevOps
@@ -84,5 +78,7 @@ steps:
     workingDirectory: zap
 
   
-
+- task: PublishHtmlReport@1
+  inputs:
+    reportDir: '$(System.DefaultWorkingDirectory)/api-scan-report.html'
     

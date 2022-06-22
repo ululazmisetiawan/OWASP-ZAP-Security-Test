@@ -74,7 +74,7 @@ steps:
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskcode)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "Severity Board : "
-      echo "High = 3 | Medium = 2 | Low = 1 |Informational = 0"
+      echo "High = 3 | Medium = 2 | Low = 1 | Informational = 0"
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 
       

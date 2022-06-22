@@ -64,6 +64,13 @@ steps:
     script: |
       sudo apt-get install xmlstarlet
       sudo apt-get install jq
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(System.DefaultWorkingDirectory)'
+    artifact: 'OwaspZap'
+    publishLocation: 'pipeline'
+
 - task: Bash@3
   displayName: Summary Report 
   inputs:
@@ -78,16 +85,11 @@ steps:
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 
       
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(System.DefaultWorkingDirectory)'
-    artifact: 'OwaspZap'
-    publishLocation: 'pipeline'
 
 - task: Bash@3
   displayName: PASSED / FAILED 
   inputs:
     filePath: 'zap/check-result.sh'
-    arguments: '$(actualResult) $(expectedResult) $(actualHigh)'
+    arguments: '$(actualResult) $(expectedResult)'
     workingDirectory: zap
 

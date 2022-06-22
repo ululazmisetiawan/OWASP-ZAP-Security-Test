@@ -82,7 +82,7 @@ steps:
       echo "1 = Low"
       echo "0 = Informational"
       echo "======= Summary Report ========"
-      echo "Alert           |       Severity"
+      echo "Alert           |       Severity Level"
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskcode)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"

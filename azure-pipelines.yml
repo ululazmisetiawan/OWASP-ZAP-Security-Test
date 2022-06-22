@@ -64,7 +64,7 @@ steps:
     script: |
       sudo apt-get install xmlstarlet
       sudo apt-get install jq
-      npm install jquery
+      sudo apt-get install libxml2-utils
 - task: Bash@3
   displayName: Summary Report 
   inputs:
@@ -75,7 +75,7 @@ steps:
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskdesc)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
-      echo "##vso[task.setvariable variable=actualHigh;]$(jQuery('table tr:first-child(2) td:first-child(2) div:first-child ')$(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
+      echo "##vso[task.setvariable variable=actualHigh;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 
       
 - task: PublishPipelineArtifact@1

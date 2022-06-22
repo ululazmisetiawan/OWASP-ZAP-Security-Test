@@ -2,10 +2,13 @@
 #
 actualResult=$1
 expectedResult=$2
+actualHigh=$3
 
 echo "======PASSED / FAILED======="
+echo "Actual Total High : $actualHigh"
 echo "Actual Total Failed : $actualResult"
 echo "Expected Total Failed : $expectedResult"
+
 
 
 float_cmp() {

@@ -69,9 +69,14 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
+      echo "Severity Board : "
+      echo "High = 3"
+      echo "Medium = 2"
+      echo "Low = 1"
+      echo "Informational = 0"
       echo "======= Summary Report ========"
       echo "Alert           |       Severity"
-      echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskdesc)"' $(System.DefaultWorkingDirectory)/api-report.json)"
+      echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskcode)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
 

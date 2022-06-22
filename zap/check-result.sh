@@ -5,7 +5,7 @@ expectedResult=$2
 
 echo "======PASSED / FAILED======="
 echo "Actual Total Failed : $actualResult"
-echo "Expected Total Failed : $expectedResult"
+echo "Maximal Failed Allowed : $expectedResult"
 
 
 
@@ -14,10 +14,10 @@ float_cmp() {
 }
 
 if float_cmp "$actualResult > $expectedResult"; then
-  echo "Test Failed because Actual Total Failed is greater or equal than Expected Total Failed"
+  echo "Test Failed because Actual Total Failed is greater or equal than Maximal Failed Allowed"
   exit 1
   #write-error "Test Failed";
 else
-  echo "Test Passed because Actual Total Failed less than Expected Total Failed"
+  echo "Test Passed because Actual Total Failed less than Maximal Failed Allowed"
 fi
 echo "============================"

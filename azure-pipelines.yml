@@ -74,7 +74,7 @@ steps:
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskdesc)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
-      echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v -m '/html/body/table[1]/tbody/tr[2]/td[2]' -c './div' -nl $(System.DefaultWorkingDirectory)/api-scan-report.html)"
+      echo "##vso[task.setvariable variable=actualHigh;]$(xmlstarlet sel -t -v -m '/html/body/table[1]/tbody/tr[2]/td[2]' -c './div' -nl $(System.DefaultWorkingDirectory)/api-scan-report.html)"
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(System.DefaultWorkingDirectory)'

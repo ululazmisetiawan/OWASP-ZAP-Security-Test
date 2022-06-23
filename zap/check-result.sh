@@ -15,7 +15,7 @@ float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-
 }
 
-if (float_cmp "$actualHigh >= $expectedHigh"; then
+if float_cmp "$actualHigh >= $expectedHigh"; then
   echo "There's HIGH result"
   exit 1
   #write-error "Test Failed"

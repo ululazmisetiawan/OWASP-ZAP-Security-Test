@@ -95,6 +95,6 @@ steps:
   displayName: PASSED / FAILED 
   inputs:
     filePath: 'zap/check-result.sh'
-    arguments: '$(actualResult) $(expectedResult) $(actualHigh)'
+    arguments: '$(actualResult) $(expectedResult) $(actualHigh) $(expectedHigh) '
     workingDirectory: zap
 

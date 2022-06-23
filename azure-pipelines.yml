@@ -87,7 +87,7 @@ steps:
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskcode)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
-      awk -v RS='</tr>' -v F='<td>' '{$2=gsub(/<[^<>]*>/,"",$2);print $2}' $(System.DefaultWorkingDirectory)/awk -v RS='</tr>' -v F='<td>' '{$2=gsub(/<[^<>]*>/,"",$2);print $2}' $(System.DefaultWorkingDirectory)/api-scan-report.html
+      awk -v RS='</tr>' -v F='<td>' '{$2=gsub(/<[^<>]*>/,"",$2);print $2}' $(System.DefaultWorkingDirectory)/api-scan-report.html
       
 
 - task: Bash@3

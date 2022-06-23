@@ -3,6 +3,7 @@
 actualResult=$1
 expectedResult=$2
 actualHigh=$3
+expectedHigh=$4
 
 echo "======PASSED / FAILED======="
 echo "Actual Total Failed : $actualHigh"
@@ -14,7 +15,7 @@ float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-
 }
 
-if ($actualHigh = 0); then
+if (float_cmp "$actualHigh >= $expectedHigh"; then
   echo "There's HIGH result"
   exit 1
   #write-error "Test Failed"

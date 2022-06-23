@@ -2,8 +2,10 @@
 #
 actualResult=$1
 expectedResult=$2
+actualHigh=$3
 
 echo "======PASSED / FAILED======="
+echo "Actual Total Failed : $(actualHigh)"
 echo "Actual Total Failed : $actualResult"
 echo "Maximal Failed Allowed : $expectedResult"
 

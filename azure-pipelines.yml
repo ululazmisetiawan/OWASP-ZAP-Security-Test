@@ -64,7 +64,8 @@ steps:
     script: |
       sudo apt-get install xmlstarlet
       sudo apt-get install jq
-      sudo apt-get install gawk
+      sudo apt-get update
+      sudo apt-get install libxml2-utils
 
 - task: PublishPipelineArtifact@1
   inputs:
@@ -87,7 +88,7 @@ steps:
       echo "$(jq -r '.site | .[] | .alerts | .[] | "\(.name) = \(.riskcode)"' $(System.DefaultWorkingDirectory)/api-report.json)"
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
-      awk -F '"' '{print $2}' $(System.DefaultWorkingDirectory)/api-scan-report.html
+      xmllint --html --xpath "/html/body/table[1]/tbody/tr[2]/td[2]/div" $(System.DefaultWorkingDirectory)/api-scan-report.html
       
 
 - task: Bash@3

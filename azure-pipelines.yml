@@ -94,7 +94,7 @@ steps:
       echo $actualMedium
       echo "##vso[task.setvariable variable=actualLow;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 3 | tail -2)"
       echo $actualLow
-      echo "##vso[task.setvariable variable=actualInformational;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 4 | tail -3)"
+      echo "##vso[task.setvariable variable=actualInformational;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 4 | tail -4)"
       echo $actualInformational
 
 - task: Bash@3

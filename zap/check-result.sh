@@ -30,15 +30,15 @@ if float_cmp "$actualHigh >= $expectedHigh"; then
   exit 1
   #write-error "Test Failed"
 elif float_cmp "$actualMedium >= $expectedMedium"; then
-  echo "There's Medium result"
+  echo "Test Failed because Total Medium is greater or equal than Maximal Total Medium Allowed"
   exit 1
   #write-error "Test Failed"
 elif float_cmp "$actualLow >= $expectedLow"; then
-  echo "There's Low result"
+  echo "Test Failed because Total Low is greater or equal than Maximal Total Low Allowed"
   exit 1
   #write-error "Test Failed"
 elif float_cmp "$actualInformational >= $expectedInformational"; then
-  echo "There's Informational result"
+  echo "Test Failed because Total Informational is greater or equal than Maximal Total Informational Allowed"
   exit 1
   #write-error "Test Failed";
 elif float_cmp "$actualResult >= $expectedResult"; then

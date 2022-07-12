@@ -89,7 +89,8 @@ steps:
       echo "==============================="
       echo "##vso[task.setvariable variable=actualResult;]$(xmlstarlet sel -t -v '//test-run/@failed' -nl $(System.DefaultWorkingDirectory)/Converted-OWASP-ZAP-Report.xml)"
       echo "##vso[task.setvariable variable=actualHigh;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 1)"
-      
+      echo "##vso[task.setvariable variable=actualMedium;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 2)"
+      echo $actualMedium
 
 - task: Bash@3
   displayName: PASSED / FAILED 

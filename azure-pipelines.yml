@@ -91,6 +91,10 @@ steps:
       echo "##vso[task.setvariable variable=actualHigh;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 1)"
       echo "##vso[task.setvariable variable=actualMedium;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 2)"
       echo $actualMedium
+      echo "##vso[task.setvariable variable=actualLow;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 3)"
+      echo $actualLow
+      echo "##vso[task.setvariable variable=actualInformational;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 4)"
+      echo $actualInformational
 
 - task: Bash@3
   displayName: PASSED / FAILED 

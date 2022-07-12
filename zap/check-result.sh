@@ -4,6 +4,12 @@ actualResult=$1
 expectedResult=$2
 actualHigh=$3
 expectedHigh=$4
+actualMedium=$5
+expectedMedium=$6
+actualLow=$7
+expectedLow=$8
+actualInformational=$9
+expectedInformational=$10
 
 echo "======PASSED / FAILED======="
 echo "High Result : $actualHigh"

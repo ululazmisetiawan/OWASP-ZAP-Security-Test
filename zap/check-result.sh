@@ -13,6 +13,9 @@ expectedInformational=$10
 
 echo "======PASSED / FAILED======="
 echo "High Result : $actualHigh"
+echo "Medium Result : $actualMedium"
+echo "Low Result : $actualLow"
+echo "Informational Result : $actualInformational"
 echo "Actual Total Failed : $actualResult"
 echo "Maximal Failed Allowed : $expectedResult"
 
@@ -23,6 +26,18 @@ float_cmp() {
 
 if float_cmp "$actualHigh >= $expectedHigh"; then
   echo "There's HIGH result"
+  exit 1
+  #write-error "Test Failed"
+elif float_cmp "$actualMedium >= $expectedMedium"; then
+  echo "There's Medium result"
+  exit 1
+  #write-error "Test Failed"
+elif float_cmp "$actualLow >= $expectedLow"; then
+  echo "There's Low result"
+  exit 1
+  #write-error "Test Failed"
+elif float_cmp "$actualInformational >= $expectedInformational"; then
+  echo "There's Informational result"
   exit 1
   #write-error "Test Failed"
 elif float_cmp "$actualResult >= $expectedResult"; then

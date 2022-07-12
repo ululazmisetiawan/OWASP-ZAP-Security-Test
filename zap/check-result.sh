@@ -12,6 +12,7 @@ expectedLow=$8
 echo "======PASSED / FAILED======="
 echo "High Result : $actualHigh"
 echo "Medium Result : $actualMedium"
+echo "Low Result : $actualLow"
 echo "Actual Total Failed : $actualResult"
 echo "Maximal Failed Allowed : $expectedResult"
 

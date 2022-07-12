@@ -8,14 +8,11 @@ actualMedium=$5
 expectedMedium=$6
 actualLow=$7
 expectedLow=$8
-actualInformational=$9
-expectedInformational=$10
 
 echo "======PASSED / FAILED======="
 echo "High Result : $actualHigh"
 echo "Medium Result : $actualMedium"
 echo "Low Result : $actualLow"
-echo "Informational Result : $actualInformational"
 echo "Actual Total Failed : $actualResult"
 echo "Maximal Failed Allowed : $expectedResult"
 
@@ -34,10 +31,6 @@ elif float_cmp "$actualMedium >= $expectedMedium"; then
   #write-error "Test Failed"
 elif float_cmp "$actualLow >= $expectedLow"; then
   echo "There's Low result"
-  exit 1
-  #write-error "Test Failed"
-elif float_cmp "$actualInformational >= $expectedInformational"; then
-  echo "There's Informational result"
   exit 1
   #write-error "Test Failed"
 elif float_cmp "$actualResult >= $expectedResult"; then

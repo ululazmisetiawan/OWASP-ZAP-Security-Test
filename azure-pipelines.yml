@@ -92,13 +92,12 @@ steps:
       echo "##vso[task.setvariable variable=actualHigh;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 1)"
       echo "##vso[task.setvariable variable=actualMedium;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 2 | tail -1)"
       echo "##vso[task.setvariable variable=actualLow;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 3 | tail -1)"
- 
+      echo "##vso[task.setvariable variable=actualInformational;]$(xmllint --html --xpath "//td[2]/div[1]/text()" $(System.DefaultWorkingDirectory)/api-scan-report.html | head -n 4 | tail -1)"
       
-
 - task: Bash@3
   displayName: PASSED / FAILED 
   inputs:
     filePath: 'zap/check-result.sh'
-    arguments: '$(actualResult) $(expectedResult) $(actualHigh) $(expectedHigh) $(actualMedium) $(expectedMedium) $(actualLow) $(expectedLow)'
+    arguments: '$(actualResult) $(expectedResult) $(actualHigh) $(expectedHigh) $(actualMedium) $(expectedMedium) $(actualLow) $(expectedLow) $(actualInformational) $(expectedInformational)'
     workingDirectory: zap
 

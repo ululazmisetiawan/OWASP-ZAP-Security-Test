@@ -16,10 +16,9 @@ echo "High Result : $actualHigh"
 echo "Medium Result : $actualMedium"
 echo "Low Result : $actualLow"
 echo "Informational Result : $actualInformational"
-echo "==========================================="
 echo "Total Failed : $actualResult"
 echo "Maximal Failed Allowed : $expectedResult"
-
+echo "============================"
 
 float_cmp() {
     awk "BEGIN{exit(!( $* ))}" <&-

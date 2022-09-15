@@ -30,7 +30,9 @@ steps:
     targetType: 'inline'
     script: |
       chmod -R 777  ./
-      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t http://jv-dds-ccs-dev.anteraja.id/rest/speedQuery/waybill/byNo/web -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.html -J api-report.json 
+      docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-api-scan.py -t 
+      http://www.google.com
+      -f openapi -g api-scan.conf -x OWASP-ZAP-Report.xml -r api-scan-report.html -J api-report.json 
       
       true
       
